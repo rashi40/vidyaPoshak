@@ -1,0 +1,55 @@
+<%- include('partials/header'); %>
+
+<div class="container">
+	<h2 style="margin-top:4em; color: #43a047; font-family: 'Rye', cursive;">
+		Our Videos
+	</h2>
+	<% if(currentUser) {%>
+	<p id="addVideos"> <a href="/achievements_videos/new" class="btn btn-success">ADD NEW Video</a></p><% } %>
+	<div class="row">
+		 <% // video.forEach(function(add){ %>
+		<% for(var add=video.length-1; add>=0;add--){ %>
+		<div class="col-md-4">
+			<div class="img-thumbnail" >
+			<div class="embed-responsive embed-responsive-16by9">
+  <iframe class="embed-responsive-item" src="<%= video[add].videoUrl %>" allowfullscreen></iframe>
+				</div>
+				<div >
+				<h3>
+					<%= video[add].videoName %> 
+					</h3></div>
+				<% if(currentUser) {%>
+				<div id="caption">
+				 <form id="delete" action="/achievements_videos/<%= video[add]._id %>?_method=DELETE" method="POST">
+		<button class="btn btn-danger">
+			Delete
+		</button>
+		 </form>
+				</div><% } %>
+			</div></div>
+		
+		<!-- <div class="col-md-4">
+			<div class="img-thumbnail" >
+				<div class="embed-responsive embed-responsive-16by9">
+  <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/v64KOxKVLVg" allowfullscreen></iframe>
+			</div>
+				<h3>
+					Our Students Testimonials
+				</h3>
+			</div>
+		</div>
+		
+		<div class="col-md-4">
+			<div class="img-thumbnail" >
+				<div class="embed-responsive embed-responsive-16by9">
+  <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/VbbK1ZkMQ6w" allowfullscreen></iframe>
+			</div>
+				<h3>
+					Our Students Testimonials
+				</h3>
+			</div>
+		</div> -->
+		<% } %>
+	</div>
+</div>
+<%- include('partials/footer'); %>
