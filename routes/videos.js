@@ -3,7 +3,19 @@ var Video = require("../models/videos");
 var middleware = require("../middleware");
 var router = express.Router();
 
-router.get("/achievements_videos/new", function(req, res){
+router.get("/achievements_videos", function(req, res){
+	Video.find({}, function(err, video){
+		if(err){
+			req.flash("error", err.message);
+		}
+		else{	
+	     res.render("videos", {video:video});	
+		}
+	});
+
+});
+
+router.get("/achievements_videos/new", middleware.isLoggedIn, function(req, res){
 	res.render("newVideo");
 });
 

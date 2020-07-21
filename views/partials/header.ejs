@@ -34,10 +34,67 @@
  .dropdown-item{
 	color: #fff;	 
  }
+.dropdown-item:active{
+	background-color: transparent;	 
+ }		 
  .dropdown-item:hover{
 	color: #2dc08d;
 	background-color: transparent;
  }
+		 .dropdown-submenu {
+    position:relative;
+}
+.dropdown-submenu>.dropdown-menu {
+    top:1em;
+    left:10rem; /* 10rem is the min-width of dropdown-menu */
+    margin-top:-6px;
+	  background-color: rgba(0,0,0,.5);
+	color: white;
+}
+
+/* rotate caret on hover */
+.dropdown-menu > li > a:hover:after {
+    text-decoration: underline;
+    transform: rotate(-90deg);
+} 
+
+ a .dropdown-item:active {
+			 background-color: transparent;
+		 }
+
+		 /* .dropdown-submenu {
+    position:relative;
+}
+.dropdown-submenu>.dropdown-menu { */
+    /* top:0;
+    left:-10rem; /* 10rem is the min-width of dropdown-menu */ */
+    /* margin-top:-6px; */
+	 /* background-color: rgba(0,0,0,.5);
+	color: white;
+}
+		 	 .dropdown-submenu:hover>.dropdown-menu { */
+    /* top:0;
+    left:-10rem; /* 10rem is the min-width of dropdown-menu */ */
+    /* margin-top:-6px; */
+	 /* background-color: rgba(0,0,0,.5);
+	color: white;
+}
+ */
+/* rotate caret on hover */
+/* .dropdown-menu > li > a:hover:after {
+    text-decoration: underline;
+    transform: rotate(-90deg);
+	 display: block;
+  background-color: rgba(0,0,0,.5);
+	color: white;
+} 
+	.dropdown-submenu>.dropdown-toggle:active { */
+  /*Without this, clicking will make it sticky*/
+    /* pointer-events: none;
+}
+		 .dropdown-submenu> .dropdown-toggle::after {
+    content: none;
+} */
 
 </style>
 	</head>
@@ -56,8 +113,28 @@
       <li class="nav-item">
         <a class="nav-link" href="/aboutus" >Home </a>
       </li>
-     <li class="nav-item ">
-        <a class="nav-link" href="#">Programs </a>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Programs
+        </a>
+        <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+          <li><a class="dropdown-item" href="/latestUpdates">Latest Updates</a></li>
+          <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="#">Nurture Merit Program</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="financialAssistanceProgram">Financial Assistance Program</a></li>
+              <li><a class="dropdown-item" href="residentialBridgeCamps">Residential Bridge Camps</a></li> 
+			  <li><a class="dropdown-item" href="libraryServices">Library Services</a></li>  
+            </ul>
+          </li>
+			<li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="#">Skill Development </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="employmentReadinessProgram">Employment Readiness</a></li>
+              <li><a class="dropdown-item" href="abdulKalamSusandhiFellowshipProgram">Susandhi-Eklakshya</a></li> 
+			  <li><a class="dropdown-item" href="eVidyaloka">EVidyaloka</a></li>  
+            </ul>
+          </li>
+			<li><a class="dropdown-item" href="/knowledgeResourceCenters">Knowledge Resource</a></li>
+        </ul>
       </li>
 		 <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -66,10 +143,8 @@
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="/achievements_videos">Our Videos</a>
           <a class="dropdown-item" href="/successStories">Success Stories</a>
+		   <a class="dropdown-item" href="http://www.vidyaposhak.net/">Newsletters </a>
         </div>
-      </li>
-     <li class="nav-item ">
-        <a class="nav-link" href="http://www.vidyaposhak.net/">Newsletters </a>
       </li>
     <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -81,6 +156,15 @@
           <a class="dropdown-item" href="/memberOfAlumni">Member Of Alumni</a>
         </div>
       </li>
+		 <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Downloads
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/contactUs">Contact Us</a>
+          <a class="dropdown-item" href="/documents">Documents</a>
+        </div>
+      </li>
       <li class="nav-item dropdown">
 		  <% if(!currentUser){ %>
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -88,13 +172,14 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="/login">login</a>
+			<a class="dropdown-item" href="/register">Register</a>
         </div>
 		  <% }  else { %>
 		   <a class="nav-link dropdown-toggle" href="/login" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
          <%=currentUser.username %>
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="/register">Add more admin</a>
+          <a class="dropdown-item" href="/admin">Admin Page</a>
           <a class="dropdown-item" href="/logout">logout</a>
         </div><% } %>
       </li>
@@ -115,6 +200,18 @@
 		</div>
 			<% } %>
 		</div>
+	
 	 
+	 <script>$('.dropdown-menu a.dropdown-toggle').on('click', function(e) {
+    if (!$(this).next().hasClass('show')) {
+        $(this).parents('.dropdown-menu').first().find('.show').removeClass("show");
+    }
+    var $subMenu = $(this).next(".dropdown-menu");
+    $subMenu.toggleClass('show');
+    $(this).parents('li.nav-item.dropdown.show').on('hidden.bs.dropdown', function(e) {
+        $('.dropdown-submenu .show').removeClass("show");
+    });
+    return false;
+});</script>
 	 
   

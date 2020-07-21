@@ -1,0 +1,30 @@
+<%- include('partials/header'); %>
+
+<div class="container">
+	<h2 style="margin-top:4em; color: #43a047; font-family: 'Rye', cursive;">
+		Admin Page
+	</h2>
+	<% if(currentUser) {%>
+	<p id="addStories"> <a href="/register" class="btn btn-success">ADD NEW USER</a></p><%} %>
+	<div class="row">
+		<% //story.forEach(function(add){ %>
+		<% for(var add=user.length-1; add>=0;add--){ %>
+		<div class="col-md-4">
+          <ul>
+			  <li><%= user[add].username %> </li>
+			</ul>
+				</div>
+				<% if(currentUser) {%>
+				<div id="caption">
+				 <form id="delete" action="/admin/<%= user[add]._id %>?_method=DELETE" method="POST">
+		<button class="btn btn-danger">
+			Delete
+		</button>
+		 </form>
+				</div><% }%>
+			
+		
+		<% } %>
+	</div>
+</div>
+<%- include('partials/footer'); %>

@@ -1,0 +1,94 @@
+<%- include('partials/header'); %>
+
+<div class="container">
+	<h2 style="margin-top:4em; color: #43a047; font-family: 'Rye', cursive;">
+		Our Audit Reports / Registration documents / Policies
+	</h2>
+	<p>
+		Vidya Poshak is registered under Karnataka Societies Registration Act 1960 on 8th of February, 2001.
+	</p>
+	<% if(currentUser) {%>
+	<p id="addReport"> <a href="/documents/new" class="btn btn-success">ADD ANNUAL REPORT</a></p><% } %>
+	<div class="row">
+		<% //story.forEach(function(add){ %>
+		<div class="col">
+			<h4 class="h4Vol">
+					Annual Reports
+				</h4>
+			<div style="text-align: left;">
+			<ul>
+				<% for(var add=doc.length-1; add>=0;add--){ %>
+				<li>
+  <a class="aVol" href="data:application/pdf;base64,<%=doc[add].pdf.data.toString('base64')%>" download="vpDocument"><%= doc[add].name %></a>
+				</li>
+				<% if(currentUser) {%>
+				<div id="caption">
+				 <form id="delete" action="/documents/<%= doc[add]._id %>?_method=DELETE" method="POST">
+		<button class="btn btn-danger">
+			Delete
+		</button>
+		 </form>
+				</div> <% } %>
+				<% } %>
+			</ul>
+			</div>
+			<hr>
+			<% if(currentUser) {%>
+	<p id="addAudit"> <a href="/documents/audit/new" class="btn btn-success">ADD AUDIT REPORT</a></p><% } %>
+			<h4 class="h4Vol">
+					Audit Reports
+				</h4>
+			<div style="text-align: left;">
+			<ul>
+				<% for(var add=aud.length-1; add>=0;add--){ %>
+				<li>
+  <a class="aVol" href="data:application/pdf;base64,<%=aud[add].pdf.data.toString('base64')%>" download="vpDocument"><%= aud[add].name %></a>
+				</li>
+				<% if(currentUser) {%>
+				<div id="caption">
+				 <form id="delete" action="/auditDocuments/<%= aud[add]._id %>?_method=DELETE" method="POST">
+		<button class="btn btn-danger">
+			Delete
+		</button>
+		 </form>
+				</div> <% } %>
+				<% } %>
+			</ul>
+			</div>
+		
+		<div style="text-align: left;">
+		<h4>
+					<strong>DETAILS</strong>
+				</h4>
+		</div>
+		<table border="1" width="100%">
+			<tr><th>ACT</th> <th>REGISTRATION No.</th> <th>	DOWNLOAD</th></tr>
+			<tr><td>Society Registration No.</td> <td>286/2000-01</td><td><a class="aVol" href="resources/VP-Society-Registration-Certificate.jpg" target="_blank">document</a></td></tr>
+			<tr><td>Society Registration – Renewal 2016</td> <td>286/2000-01</td> <td><a class="aVol" href="resources/Society-Renewal-Certificate-2016-17.pdf" target="_blank">document</a></td></tr>
+			<tr><td>FCRA Renewal valid from Nov-2016</td> <td>94520046</td> <td><a class="aVol" href="resources/FCRA-Renewal-Certificate.pdf" target="_blank">document</a></td></tr>
+			<tr><td>12 A of IT</td> <td>12 A of IT</td> <td><a class="aVol" href="resources/Vidya_Poshak_12-A_Certificate.jpg" target="_blank">document</a></td></tr>
+			<tr><td>80G of IT</td> <td>F.No.118/483/CIT-HBL/2011-2012</td> <td><a class="aVol" href="resources/Vidya_Poshak_80G_Certificate.jpg" target="_blank">document</a></td></tr>
+			<tr><td>PAN</td> <td>AAATV3469J</td> <td><a class="aVol" href="resources/Vidya_Poshak_PAN_CARD.jpg" target="_blank">document</a></td></tr>
+			<tr><td>TAN</td> <td>BLRV04344E</td> <td><a class="aVol" href="resources/Vidya_Poshak_TAN_Reg_No.pdf" target="_blank">document</a></td></tr>
+			<tr><td>EPF Registration </td><td></td> <td><a class="aVol" href="resources/EPF.pdf" target="_blank">document</a></td></tr>
+			<tr><td>Memorandum</td> <td></td> <td><a class="aVol" href="resources/Memorandum-of-Association-09-07-2013.pdf" target="_blank">document</a></td></tr>
+			<tr><td>List of board members 2016</td> <td></td> <td><a class="aVol" href="resources/List-of-Board-Members.pdf" target="_blank">document</a></td></tr>
+			<tr><td>Organization Structure – Organogram</td> <td></td> <td><a class="aVol" href="resources/Organogram.jpg" target="_blank">document</a></td></tr>
+			<tr><td>Trademark Registration Certificate</td> <td></td> <td><a class="aVol" href="resources/Trade-Mark-Certificate.pdf" target="_blank">document</a></td></tr>
+		</table>
+		<hr>
+		<table border="1" width="100%">
+			<tr><th>Policy Name</th> <th>Last Updated</th> <th>DOWNLOAD</th></tr>
+			<tr><td>HR Policy/Manual</td> <td>October 2016</td> <td><a class="aVol" href="resources/H.R.-Manual-2016-.pdf" target="_blank">document</a></td></tr>
+			<tr><td>Finance Policy</td> <td>April 2016</td> <td><a class="aVol" href="resources/Vidya-Poshak-Financial-Management-Policy-Apr-2014.pdf" target="_blank">document</a></td></tr>
+			<tr><td>Social Media Guidelines</td> <td>September 2013</td> <td><a class="aVol" href="resources/Social-Media-Employee-Guidelines.pdf" target="_blank">document</a></td></tr>
+			<tr><td>Grievance policy</td> <td>Nov 2016</td> <td><a class="aVol" href="resources/VP-Grievance-Policy.pdf" target="_blank">document</a></td></tr>
+			<tr><td>Compliants policy</td> <td> Nov 2016</td> <td><a class="aVol" href="resources/VP-Complaints-Policy.pdf" target="_blank">document</a></td></tr>
+			<tr><td>Harrassment policy</td> <td> Nov 2016</td> <td><a class="aVol" href="resources/VP-Sexual-Harassment-Policy.pdf" target="_blank">document</a></td></tr>
+			<tr><td>Child Protection policy</td> <td>Nov 2016</td> <td><a class="aVol" href="resources/VP-Child-Protection-Policy.pdf" target="_blank">document</a></td></tr>
+		</table>
+		<hr>
+				</div>
+	</div>
+</div>
+<%- include('partials/footer'); %>

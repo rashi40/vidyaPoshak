@@ -10,12 +10,15 @@ router.get("/",function(req,res) {
    	res.render("landing");
 });
 
+router.get("/aboutus", function(req, res){
+   res.render("about");	
+});
 
-router.get("/register", middleware.isLoggedIn, function(req, res){
+router.get("/register", function(req, res){
 	res.render("register");
 });
 
-router.post("/register", middleware.isLoggedIn, function(req, res){
+router.post("/register",  function(req, res){
 	var newUser = new User({username:req.body.username});
 	User.register(newUser, req.body.password, function(err, user){
 		if(err){
@@ -56,6 +59,38 @@ router.get("/volunteerUs", function(req, res){
 
 router.get("/memberOfAlumni", function(req, res){
 	res.render("alumni");
+});
+
+router.get("/financialAssistanceProgram", function(req, res){
+	res.render("financialAssistance");
+});
+
+router.get("/residentialBridgeCamps", function(req, res){
+	res.render("bridgeCamps");
+});
+
+router.get("/libraryServices", function(req, res){
+	res.render("libraryServices");
+});
+
+router.get("/employmentReadinessProgram", function(req, res){
+	res.render("employmentReadiness");
+});
+
+router.get("/abdulKalamSusandhiFellowshipProgram", function(req, res){
+	res.render("eklakshya");
+});
+
+router.get("/eVidyaloka", function(req, res){
+	res.render("evidyaloka");
+});
+
+router.get("/knowledgeResourceCenters", function(req, res){
+	res.render("knowledgeResource");
+});
+
+router.get("/contactUs", function(req, res){
+	res.render("contact");
 });
 
 module.exports = router;

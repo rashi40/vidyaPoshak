@@ -30,7 +30,7 @@ function checkFileType(file, cb){
 		return cb(null, true);
 	}
 	else {
-		cb(error);
+		cb("only .png .jpg .jpeg .gif allowed");
 	}
 }
 

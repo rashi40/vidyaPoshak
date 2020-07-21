@@ -20,10 +20,10 @@
 					<%= update[i].name %> 
 					</h3></div>
 				<p>
-					<%= update[i].description %>
-				</p>
-				<a href="/latestUpdates/<%= update[i]._id %>">See more >></a>
-				<% if(currentUser) {%>
+					<%= update[i].description.substring(0, 15)%>...
+				
+				<a aVol href="/latestUpdates/<%= update[i]._id %>">See more >></a>
+					<% if(currentUser) {%></p>
 				<div >
 				 <form id="delete" action="/latestUpdates/<%= update[i]._id %>?_method=DELETE" method="POST">
 		<button class="btn btn-danger">
