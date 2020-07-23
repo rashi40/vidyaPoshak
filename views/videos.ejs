@@ -4,7 +4,7 @@
 	<h2 style="margin-top:4em; color: #43a047; font-family: 'Rye', cursive;">
 		Our Videos
 	</h2>
-	<% if(currentUser) {%>
+	<% if(currentUser && currentUser.isAdmin) {%>
 	<p id="addVideos"> <a href="/achievements_videos/new" class="btn btn-success">ADD NEW Video</a></p><% } %>
 	<div class="row">
 		 <% // video.forEach(function(add){ %>
@@ -18,7 +18,7 @@
 				<h3>
 					<%= video[add].videoName %> 
 					</h3></div>
-				<% if(currentUser) {%>
+				<% if(currentUser && currentUser.isAdmin) {%>
 				<div id="caption">
 				 <form id="delete" action="/achievements_videos/<%= video[add]._id %>?_method=DELETE" method="POST">
 		<button class="btn btn-danger">

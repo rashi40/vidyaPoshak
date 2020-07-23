@@ -53,6 +53,7 @@ var middlewareObj = {};
 
 middlewareObj.isLoggedIn = function(req, res, next){
 	if(req.isAuthenticated()){
+		if( req.user.isAdmin)
 		return next();
 	}
 	req.flash("error", "You need to be logged in to do that");

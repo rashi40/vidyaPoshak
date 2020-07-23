@@ -7,7 +7,7 @@
 	<p>
 		Vidya Poshak is registered under Karnataka Societies Registration Act 1960 on 8th of February, 2001.
 	</p>
-	<% if(currentUser) {%>
+	<% if(currentUser && currentUser.isAdmin) {%>
 	<p id="addReport"> <a href="/documents/new" class="btn btn-success">ADD ANNUAL REPORT</a></p><% } %>
 	<div class="row">
 		<% //story.forEach(function(add){ %>
@@ -21,7 +21,7 @@
 				<li>
   <a class="aVol" href="data:application/pdf;base64,<%=doc[add].pdf.data.toString('base64')%>" download="vpDocument"><%= doc[add].name %></a>
 				</li>
-				<% if(currentUser) {%>
+				<% if(currentUser && currentUser.isAdmin) {%>
 				<div id="caption">
 				 <form id="delete" action="/documents/<%= doc[add]._id %>?_method=DELETE" method="POST">
 		<button class="btn btn-danger">
@@ -33,7 +33,7 @@
 			</ul>
 			</div>
 			<hr>
-			<% if(currentUser) {%>
+			<% if(currentUser && currentUser.isAdmin) {%>
 	<p id="addAudit"> <a href="/documents/audit/new" class="btn btn-success">ADD AUDIT REPORT</a></p><% } %>
 			<h4 class="h4Vol">
 					Audit Reports
@@ -44,7 +44,7 @@
 				<li>
   <a class="aVol" href="data:application/pdf;base64,<%=aud[add].pdf.data.toString('base64')%>" download="vpDocument"><%= aud[add].name %></a>
 				</li>
-				<% if(currentUser) {%>
+				<% if(currentUser && currentUser.isAdmin) {%>
 				<div id="caption">
 				 <form id="delete" action="/auditDocuments/<%= aud[add]._id %>?_method=DELETE" method="POST">
 		<button class="btn btn-danger">

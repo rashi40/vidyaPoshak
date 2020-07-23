@@ -1,16 +1,32 @@
 <%- include('partials/header'); %>
 <style>
 	h1{
-		margin-top: 5em;
+		margin-top: 4em;
+		text-align: center;
 	}
 </style>
 
 <h1>
 	Register
 </h1>
-<form action="/register" method="POST">
-	<input type="text" name="username" placeholder="username">
-	<input type="password" name="password" placeholder="password">
-	<input type="submit" value="register">
-</form>
+
+  <div class="row">
+        <div style="width: 30%; margin: 25px auto;">
+            <form action="/register" method="post">
+                <div class="form-group">
+                    <input class="form-control" type="text" name="username" placeholder="username">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="password" name="password" placeholder="password">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="adminCode" placeholder="Admin code">
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-lg btn-success btn-block">Sign Up!</button>
+                </div>
+            </form>
+            <a class="aVol" href="/">Go Back</a>
+        </div>
+    </div>
 <%- include('partials/footer'); %>

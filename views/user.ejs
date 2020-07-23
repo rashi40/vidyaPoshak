@@ -4,7 +4,7 @@
 	<h2 style="margin-top:4em; color: #43a047; font-family: 'Rye', cursive;">
 		Admin Page
 	</h2>
-	<% if(currentUser) {%>
+	<% if(currentUser && currentUser.isAdmin) {%>
 	<p id="addStories"> <a href="/register" class="btn btn-success">ADD NEW USER</a></p><%} %>
 	<div class="row">
 		<% //story.forEach(function(add){ %>
@@ -14,7 +14,7 @@
 			  <li><%= user[add].username %> </li>
 			</ul>
 				</div>
-				<% if(currentUser) {%>
+				<% if(currentUser && currentUser.isAdmin) {%>
 				<div id="caption">
 				 <form id="delete" action="/admin/<%= user[add]._id %>?_method=DELETE" method="POST">
 		<button class="btn btn-danger">

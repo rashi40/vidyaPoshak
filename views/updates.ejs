@@ -4,7 +4,7 @@
 	<h2 style="margin-top:4em; color: #43a047; font-family: 'Rye', cursive;">
 		Latest Updates
 	</h2>
-	<% if(currentUser) {%>
+	<% if(currentUser && currentUser.isAdmin) {%>
 	<p id="addStories"> <a href="/latestUpdates/new" class="btn btn-success">ADD NEW UPDATES</a></p><% } %>
 	<div class="row">
 		<% //update.forEach(function(add){ %>
@@ -23,7 +23,7 @@
 					<%= update[i].description.substring(0, 15)%>...
 				
 				<a aVol href="/latestUpdates/<%= update[i]._id %>">See more >></a>
-					<% if(currentUser) {%></p>
+					<% if(currentUser && currentUser.isAdmin) {%></p>
 				<div >
 				 <form id="delete" action="/latestUpdates/<%= update[i]._id %>?_method=DELETE" method="POST">
 		<button class="btn btn-danger">

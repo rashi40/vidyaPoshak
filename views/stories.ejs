@@ -4,7 +4,7 @@
 	<h2 style="margin-top:4em; color: #43a047; font-family: 'Rye', cursive;">
 		Success Stories
 	</h2>
-	<% if(currentUser) {%>
+	<% if(currentUser && currentUser.isAdmin) {%>
 	<p id="addStories"> <a href="/successStories/new" class="btn btn-success">ADD NEW STORY</a></p><%} %>
 	<div class="row">
 		<% //story.forEach(function(add){ %>
@@ -19,7 +19,7 @@
 				<h3>
 					<%= story[add].name %> 
 					</h3></div>
-				<% if(currentUser) {%>
+				<% if(currentUser && currentUser.isAdmin) {%>
 				<div id="caption">
 				 <form id="delete" action="/successStories/<%= story[add]._id %>?_method=DELETE" method="POST">
 		<button class="btn btn-danger">
