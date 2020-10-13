@@ -1,3 +1,5 @@
+![Screenshot from 2020-10-13 11-27-38](https://user-images.githubusercontent.com/48552022/95821454-90510500-0d47-11eb-9703-64fb7481d9fa.png)
+
 # VidyaPoshak
 
 This project aims at building a complete web app for the Non-Profit Organization VidyaPoshak.
